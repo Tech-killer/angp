@@ -1,0 +1,246 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Government Website - Professional Design with Nagpur Development Theme */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  /* Hero section backgrounds - Government Orange & Saffron Theme */
+  .bg-hero-pattern {
+    background: linear-gradient(135deg, #ff6600 0%, #ff8c00 50%, #ffa500 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+  }
+  
+  .bg-government-header {
+    background: linear-gradient(135deg, #ff6600 0%, #ff8c00 100%);
+    position: relative;
+  }
+  
+  .bg-government-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M30 30m-25 0a25,25 0 1,1 50,0a25,25 0 1,1 -50,0'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* About section backgrounds - Government Blue & Green Theme */
+  .bg-about-hero {
+    background: 
+      linear-gradient(135deg, rgba(13, 71, 161, 0.9) 0%, rgba(25, 118, 210, 0.9) 100%),
+      url('https://images.unsplash.com/photo-1555992336-03a23c7dc14e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+    position: relative;
+  }
+  
+  .bg-about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M40 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20zm20-20c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-card-gradient {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .bg-vision-card {
+    background: 
+      linear-gradient(135deg, rgba(13, 71, 161, 0.95) 0%, rgba(25, 118, 210, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+  }
+  
+  .bg-mission-card {
+    background: 
+      linear-gradient(135deg, rgba(46, 125, 50, 0.95) 0%, rgba(76, 175, 80, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+  }
+
+  /* Scheme section backgrounds - Government Green & Development Theme */
+  .bg-scheme-hero {
+    background: 
+      linear-gradient(135deg, rgba(46, 125, 50, 0.9) 0%, rgba(76, 175, 80, 0.9) 100%),
+      url('https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+    position: relative;
+  }
+  
+  .bg-scheme-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpolygon points='30,5 35,20 50,20 40,30 45,45 30,35 15,45 20,30 10,20 25,20'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-scheme-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.95) 100%);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+  }
+  
+  .bg-scheme-card:hover {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
+    transform: translateY(-5px);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+  }
+
+  /* Footer backgrounds - Professional Government Dark Theme */
+  .bg-footer-gradient {
+    background: 
+      linear-gradient(135deg, rgba(33, 37, 41, 0.95) 0%, rgba(52, 58, 64, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+    position: relative;
+  }
+  
+  .bg-footer-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M25 25m-20 0a20,20 0 1,1 40,0a20,20 0 1,1 -40,0'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Map section background - Nagpur Development Theme */
+  .bg-map-section {
+    background: 
+      linear-gradient(135deg, rgba(46, 125, 50, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%),
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+  }
+
+  /* Global page background - Clean Government Theme */
+  .bg-page-pattern {
+    background: 
+      linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpolygon points='50,0 60,40 100,50 60,60 50,100 40,60 0,50 40,40'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+
+  /* Animation - Slower and more professional */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes bounceGentle {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+
+  /* Glass Card Effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Government Color Utilities */
+  .government-orange {
+    background: linear-gradient(135deg, #ff6600, #ff8c00);
+  }
+
+  .government-blue {
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+  }
+
+  .government-green {
+    background: linear-gradient(135deg, #4caf50, #81c784);
+  }
+
+  .government-purple {
+    background: linear-gradient(135deg, #7b1fa2, #ab47bc);
+  }
+
+  .government-amber {
+    background: linear-gradient(135deg, #f57c00, #ffb74d);
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+
+  /* Responsive Utilities */
+  @media (max-width: 768px) {
+    .glass-card {
+      margin: 0 10px;
+    }
+    
+    .bg-page-pattern {
+      background-size: 300% 300%, 40px 40px;
+    }
+  }
+
+  /* Print Styles */
+  @media print {
+    .glass-card {
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: none;
+    }
+  }
+}
