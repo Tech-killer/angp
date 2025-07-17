@@ -5,34 +5,40 @@ import 'swiper/css/navigation';
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
-    alt: "Mountain Lake",
-    title: "Mountain Lake",
-    description: "A tranquil mountain lake at sunrise."
+    src: "Scroll1.jpeg",
   },
   {
-    src: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1000&q=80",
-    alt: "Desert Road",
-    title: "Desert Road",
-    description: "A long road through the desert."
+    src: "Scroll2.png",
   },
   {
-    src: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=1000&q=80",
-    alt: "Forest Waterfall",
-    title: "Forest Waterfall",
-    description: "A beautiful waterfall in a lush forest."
+    src: "Scroll3.png",
+  },
+    {
+    src: "Scroll4.png",
+  },
+    {
+    src: "Scroll5.png",
+  },
+    {
+    src: "Scroll6.png",
+  },
+    {
+    src: "Scroll7.png",
+  },
+    {
+    src: "Scroll8.png",
+  },
+    {
+    src: "Scroll9.png",
+  },
+    {
+    src: "Scroll10.png",
+  },
+    {
+    src: "Scroll11.png",
   },
   {
-    src: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
-    alt: "City Night",
-    title: "City at Night",
-    description: "A vibrant city skyline at night."
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80",
-    alt: "Tropical Beach",
-    title: "Tropical Beach",
-    description: "A pristine tropical beach with turquoise water."
+    src: "Scroll12.png",
   }
 ];
 
@@ -60,14 +66,17 @@ const Scroller = () => {
         }}
         loop={true}
         loopAdditionalSlides={images.length}
+        slidesPerView={3}
+        spaceBetween={2}
         className="w-full h-[300px]"
       >
         {slides.map((img, idx) => (
           <SwiperSlide key={idx} className="relative w-full h-full">
             <img
               src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover"
+              alt={img.alt || `Slide ${idx + 1}`}
+              className="w-full h-full object-contain bg-black"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
               loading={idx === 0 ? 'eager' : 'lazy'}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

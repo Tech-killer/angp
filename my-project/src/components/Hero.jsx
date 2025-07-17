@@ -45,12 +45,29 @@ const Hero = () => {
     ]
   };
 
+  // Photo gallery with 9 frames - split into 5 circular (top) and 4 rectangular (bottom)
+  const photoGallery = [
+    { id: 1, image: "https://myneta.info/images_candidate/mynetai_ews5maharashtra2019/67b59abc851d0d6f8471c452ce52be9ea1355795.jpeg", title: "Dr. Ashok Ramji Uike", category: "Hon'ble Minister, Tribal Development." },
+    { id: 2, image: "https://i.ibb.co/VYwWm4K9/0-C771-B18-89-CC-4551-9-D6-D-3-AB25-DA30-D2-C.png", title: "Shri. Indranil Manoharrao Naik", category: "Hon'ble State Minister, Tribal Development Department." },
+    { id: 3, image: "https://atcnagpur.com/images/VijayWaghmare.jpg", title: " Shri. Vijay Waghmare (IAS)", category: "Hon'ble Secretary, Tribal Development Department, Maharashtra." },
+    { id: 4, image: "https://atcnagpur.com/images/leena_bansod.png", title: "Smt. Leena Bansod (IAS)", category: " Hon'ble Commissioner, Maharashtra." },
+    { id: 5, image: "https://atcnagpur.com/images/ayushi_singh.png", title: "Smt. Ayushi Singh, (IAS)", category:"Hon'ble Additional Tribal Commissioner, Nagpur, Maharashtra." },
+    { id: 6, image: "https://cdnbbsr.s3waas.gov.in/s3c8758b517083196f05ac29810b924aca/uploads/2024/07/202407311873496196-scaled.jpg", title: "Shri C. P. Radhakrishnan", category: "Hon'ble Governor of Maharashtra" },
+    { id: 7, image: "https://bjpbengal.org/wp-content/uploads/2021/02/Devendra_Fadnavis.jpg", title: "Shri. Devendra Fadnavis", category: "Hon’ble Chief Minister, Maharashtra State." },
+    { id: 8, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp7n4aEyaxZVy95CVsIK7DnBwyfiplAmMHOQ&s", title: "Shri. Eknath Shinde", category: " Hon’ble Deputy Chief Minister, Maharashtra State." },
+    { id: 9, image: "https://miro.medium.com/v2/resize:fit:2400/1*b8hCSGgUAO0xM34IdH2HaQ.jpeg", title: "Shri. Ajit Pawar", category: " Hon’ble Deputy Chief Minister, Maharashtra State." }
+  ];
+  
+  // Split photos into circular (top 5) and rectangular (bottom 4)
+  const circularPhotos = photoGallery.slice(0, 5);
+  const rectangularPhotos = photoGallery.slice(5, 9);
+
   // Number of items to show at a time in each section
   const visibleCount = {
     importantLinks: 3,
     notifications: 2,
     employeeCorner: 1,
-    dignitaries: 2 // Show all dignitaries at once
+    dignitaries: 2
   };
 
   // Initialize all sections with items immediately
@@ -109,7 +126,8 @@ const Hero = () => {
   return (
     <div className="w-full bg-page-pattern min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Upper Half - Original Content + Circular Photos */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Left Column - Important Links */}
           <div className="glass-card rounded-2xl shadow-lg p-6 gov-card-hover border border-gray-200">
             <div className="flex items-center justify-between mb-4">
@@ -248,39 +266,124 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Image Modal */}
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={closeModal}>
-          <div className="relative max-w-4xl w-full max-h-[90vh]">
-            <button 
-              className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300"
-              onClick={closeModal}
-            >
-              &times;
-            </button>
-            <img 
-              src={selectedImage} 
-              alt="Full view" 
-              className="w-full h-full object-contain rounded-lg shadow-xl"
-            />
+
+
+        {/* Photo Gallery (Green, Square) - 4 Photos */}
+        <div className="glass-card rounded-2xl shadow-lg p-6 gov-card-hover border border-gray-200 mb-10">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-emerald-600">Photo Gallery</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {rectangularPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className="group relative flex flex-col items-center cursor-pointer transform hover:scale-105 transition-all duration-300"
+                onClick={() => handleImageClick(photo.image)}
+              >
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mb-3">
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    className="w-full h-full object-cover rounded-2xl border-4 border-white shadow-2xl group-hover:border-emerald-400 transition-all duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 right-0 w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white text-lg">📷</span>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-base font-semibold text-gray-800 mb-1 group-hover:text-emerald-600 transition-colors line-clamp-1">{photo.title}</h3>
+                  <span className="inline-block bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-700 text-sm px-3 py-1 rounded-full group-hover:from-emerald-200 group-hover:to-green-200 transition-all">
+                    {photo.category}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      )}
-      
-      {/* Add this to your CSS or Tailwind config */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-      `}</style>
+
+        {/* Featured Photos (Purple/Indigo, Circular) - 5 Photos */}
+        <div className="glass-card rounded-2xl shadow-lg p-6 gov-card-hover border border-gray-200 mb-10">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-indigo-600">Featured Photos</h2>
+            <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow uppercase tracking-wider">
+              Highlights
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+            {circularPhotos.map((photo) => (
+              <div 
+                key={photo.id}
+                className="group relative flex flex-col items-center cursor-pointer transform hover:scale-105 transition-all duration-300"
+                onClick={() => handleImageClick(photo.image)}
+              >
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 mb-3">
+                  <img 
+                    src={photo.image} 
+                    alt={photo.title}
+                    className="w-full h-full object-cover rounded-full border-4 border-white shadow-lg group-hover:border-indigo-300 transition-all duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 right-0 w-7 h-7 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
+                    <span className="text-white text-sm">📷</span>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-1 group-hover:text-indigo-600 transition-colors line-clamp-1">{photo.title}</h3>
+                  <span className="inline-block bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-xs px-2 py-1 rounded-full group-hover:from-indigo-200 group-hover:to-purple-200 transition-all">
+                    {photo.category}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Modal for selected image */}
+        {selectedImage && (
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={closeModal}>
+            <div className="relative max-w-4xl w-full max-h-[90vh]">
+              <button 
+                className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300 transition-colors"
+                onClick={closeModal}
+              >
+                &times;
+              </button>
+              <img 
+                src={selectedImage} 
+                alt="Full view" 
+                className="w-full h-full object-contain rounded-lg shadow-2xl"
+              />
+            </div>
+          </div>
+        )}
+        {/* Styles */}
+        <style jsx>{`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+          }
+          .aspect-w-16 {
+            position: relative;
+            width: 100%;
+          }
+          .aspect-h-12 {
+            padding-bottom: 75%;
+          }
+          .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        `}</style>
+      </div>
     </div>
   );
-};
+}
 
 export default Hero;
