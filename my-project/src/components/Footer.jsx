@@ -115,7 +115,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-gray-300 mb-4 md:mb-0">
               <p>© {new Date().getFullYear()} Tribal Development Department, Government of Maharashtra. All rights reserved.</p>
-              <p className="mt-1">Developed by Embedded Creations (Harsh Sharma)</p>
+              <p className="mt-1">Developed by Embedded Creations & (Harsh Sharma)</p>
             </div>
             <div className="flex items-center space-x-6">
               <a href="#" className="text-sm text-gray-300 hover:text-white transition-colors">
