@@ -13,28 +13,28 @@ const images = [
   {
     src: "Scroll3.png",
   },
-    {
+  {
     src: "Scroll4.png",
   },
-    {
+  {
     src: "Scroll5.png",
   },
-    {
+  {
     src: "Scroll6.png",
   },
-    {
+  {
     src: "Scroll7.png",
   },
-    {
+  {
     src: "Scroll8.png",
   },
-    {
+  {
     src: "Scroll9.png",
   },
-    {
+  {
     src: "Scroll10.png",
   },
-    {
+  {
     src: "Scroll11.png",
   },
   {
@@ -66,8 +66,23 @@ const Scroller = () => {
         }}
         loop={true}
         loopAdditionalSlides={images.length}
-        slidesPerView={3}
-        spaceBetween={2}
+        breakpoints={{
+          // Small screens (mobile) - 1 slide
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          // Medium screens (tablet) - 2 slides
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          // Large screens (desktop) - 3 slides
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        }}
         className="w-full h-[300px]"
       >
         {slides.map((img, idx) => (
@@ -106,7 +121,7 @@ const Scroller = () => {
       <div className="w-full bg-gray-900 text-white overflow-hidden">
         <div className="animate-marquee whitespace-nowrap py-3">
           {[...scrollingTexts, ...scrollingTexts].map((text, index) => (
-            <span key={index} className="mx-8 inline-block">
+            <span key={index} className="mx-4 sm:mx-6 md:mx-8 inline-block text-sm sm:text-base">
               {text}
             </span>
           ))}
@@ -130,11 +145,38 @@ const Scroller = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: all 0.3s ease;
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+          background: rgba(0, 0, 0, 0.8);
+          transform: scale(1.1);
         }
         .swiper-button-prev:after,
         .swiper-button-next:after {
           font-size: 20px;
           font-weight: bold;
+        }
+        
+        /* Hide navigation buttons on very small screens for better UX */
+        @media (max-width: 640px) {
+          .swiper-button-prev,
+          .swiper-button-next {
+            display: none !important;
+          }
+        }
+        
+        /* Responsive height adjustments */
+        @media (max-width: 768px) {
+          .swiper {
+            height: 250px !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .swiper {
+            height: 200px !important;
+          }
         }
       `}</style>
     </div>
